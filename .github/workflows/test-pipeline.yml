@@ -1,0 +1,22 @@
+name: Test Pipeline with Inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'test message'
+        required: true
+        default: 'default message test'
+      test1:
+        description: 'test1 desc'
+        required: false
+        default: 'test1'
+
+jobs:
+  print-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: |
+          echo "message: ${{ github.event.inputs.message }}"
+          echo "params: ${{ github.event.inputs.test1 }}"
