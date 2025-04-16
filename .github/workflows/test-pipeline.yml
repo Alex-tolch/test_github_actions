@@ -20,3 +20,11 @@ jobs:
         run: |
           echo "message: ${{ github.event.inputs.message }}"
           echo "params: ${{ github.event.inputs.test1 }}"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir -p build && echo "Hello World" > build/hello.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: build/
